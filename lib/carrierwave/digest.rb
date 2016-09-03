@@ -23,7 +23,7 @@ module Carrierwave
         define_method("update_#{name}_digest") do
           self.send("#{name}_digest=", send("#{name}_digest")) if send("#{name}_changed?")
         end
-        before_save "update_#{name}_digest".to_sym
+        before_save "update_#{name}_digest".to_sym if(respond_to?(:before_save))
       end
     end
   end
